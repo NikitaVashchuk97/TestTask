@@ -1,0 +1,6 @@
+{
+  "ConnectionStrings": {
+    "DefaultConnectionDb": "Server=localhost;Port=3306;User=root;Password=265676-333AAAaaa;Database=testDb;",
+    "DefaultConnectionJson": "test.json"
+  }
+}

@@ -1,0 +1,145 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Список пользователей</title>
+</head>
+<body>
+    <div id="errors"></div>
+    <h2>Список пользователей</h2>
+    <form name="userForm">
+        <div>
+            <label for="name">Имя:</label>
+            <input name="name" />
+
+            <label for="surname">Фамилия:</label>
+            <input name="surname" />
+
+            <label for="mail">Почта:</label>
+            <input name="mail" />
+
+            <label for="password">Пароль:</label>
+            <input name="password" />
+
+            <button type="submit" id="submit">Добавить</button>
+        </div>
+    </form>
+    <table>
+        <thead><tr><th>Id</th><th>Имя</th><th>Фамилия</th><th>Почта</th><th>Пароль</th></tr></thead>
+        <tbody>
+        </tbody>
+    </table>
+    <script>
+        async function GetUsers() {
+            const response = await fetch("/api/users", {
+                method: "GET",
+                headers: { "Accept": "application/json" }
+            });
+            if (response.ok === true) {
+                const users = await response.json();
+                let rows = document.querySelector("tbody");
+                users.forEach(user => {
+                    rows.append(row(user));
+                });
+            }
+        }
+
+
+        async function CreateUser(userName, userSurname, userMail, userPassword) {
+
+            const response = await fetch("api/users", {
+                method: "POST",
+                headers: { "Accept": "application/json", "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    name: userName,
+                    surname: userSurname,
+                    mail: userMail,
+                    password: userPassword
+                })
+            });
+            if (response.ok === true) {
+                const user = await response.json();
+                document.querySelector("tbody").append(row(user));
+            }
+            else {
+                const errorData = await response.json();                
+                if (errorData) {
+
+                    if (errorData["Name"]) {
+                        addError(errorData["Name"]);
+                    }
+
+                    if (errorData.errors) {
+                        if (errorData.errors["Name"]) {
+                            addError(errorData.errors["Name"]);
+                        }
+                        if (errorData.errors["Surname"]) {
+                            addError(errorData.errors["Surname"]);
+                        }
+                        if (errorData.errors["Mail"]) {
+                            addError(errorData.errors["Mail"]);
+                        }
+                        if (errorData.errors["Password"]) {
+                            addError(errorData.errors["Password"]);
+                        }
+                    }
+                }
+            }
+        }
+
+        function addError(errors) {
+            errors.forEach(error => {
+                const p = document.createElement("p");
+                p.append(error);
+                document.getElementById("errors").append(p);
+            });
+        }
+
+
+        function row(user) {
+
+            const tr = document.createElement("tr");
+
+            const idTd = document.createElement("td");
+            idTd.append(user.id);
+            tr.append(idTd);
+
+            const nameTd = document.createElement("td");
+            nameTd.append(user.name);
+            tr.append(nameTd);
+
+            const surnameTd = document.createElement("td");
+            surnameTd.append(user.surname);
+            tr.append(surnameTd);
+
+            const mailTd = document.createElement("td");
+            mailTd.append(user.mail);
+            tr.append(mailTd);
+
+            const passwordTd = document.createElement("td");
+            passwordTd.append(user.password);
+            tr.append(passwordTd);
+
+            return tr;
+        }
+
+
+        document.forms["userForm"].addEventListener("submit", e => {
+            e.preventDefault();
+
+            document.getElementById("errors").innerHTML = "";
+
+            const form = document.forms["userForm"];
+            const name = form.elements["name"].value;
+            const surname = form.elements["surname"].value;
+            const mail = form.elements["mail"].value;
+            const password = form.elements["password"].value;
+            CreateUser(name, surname, mail, password);//add почта, пароль, проверка модели(выдать ошибку через ErrorMessageResourceType, добавить кнопку смены языка через ресурсные ключи)
+        });
+
+
+        GetUsers();
+
+    </script>
+</body>
+</html>
