@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "A7DhanRtIbHXtVtMBkm3DaE4F20VTP2yv/IuQVjbxGc8Szkv3ArEIu309XODBHAUVJowTDPMA1rLrJ0DjtLXmA==",
+  "dgSpecHash": "8gZ0R7JxNioBOqffViDRp5X5aSJyeQvbWL7tcXn9mfq7oCd2tOldYfquE/MJEbjcxo6DTfOTCOhvzBHJwamG5g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\user\\Desktop\\Repository\\TestTask\\Test task.Tests\\Test task.Tests.csproj",
+  "projectFilePath": "C:\\Users\\user\\Desktop\\RepositoryTestTask\\TestTask\\Test task.Tests\\Test task.Tests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\user\\.nuget\\packages\\castle.core\\4.4.0\\castle.core.4.4.0.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\microsoft.codecoverage\\16.5.0\\microsoft.codecoverage.16.5.0.nupkg.sha512",

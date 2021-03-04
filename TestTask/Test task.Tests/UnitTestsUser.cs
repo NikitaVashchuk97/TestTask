@@ -56,7 +56,7 @@ namespace Test_task.Tests
 
         [Order(1)]
         [Test]
-        public async Task TestJsonGetAllUsers()//название
+        public async Task TestGetAllUsers()
         {
             var users = await UserManager.GetAllUsers();
 
@@ -66,7 +66,7 @@ namespace Test_task.Tests
 
         [Order(2)]
         [Test]
-        public async Task TestCreateUserJson()
+        public async Task TestCreateUser()
         {
             await UserManager.CreateUser(testUser);
 

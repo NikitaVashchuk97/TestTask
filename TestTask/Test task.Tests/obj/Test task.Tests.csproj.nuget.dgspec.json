@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\user\\Desktop\\Repository\\TestTask\\Test task.Tests\\Test task.Tests.csproj": {}
+    "C:\\Users\\user\\Desktop\\RepositoryTestTask\\TestTask\\Test task.Tests\\Test task.Tests.csproj": {}
   },
   "projects": {
-    "C:\\Users\\user\\Desktop\\Repository\\TestTask\\Test task.Tests\\Test task.Tests.csproj": {
+    "C:\\Users\\user\\Desktop\\RepositoryTestTask\\TestTask\\Test task.Tests\\Test task.Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\user\\Desktop\\Repository\\TestTask\\Test task.Tests\\Test task.Tests.csproj",
+        "projectUniqueName": "C:\\Users\\user\\Desktop\\RepositoryTestTask\\TestTask\\Test task.Tests\\Test task.Tests.csproj",
         "projectName": "Test task.Tests",
-        "projectPath": "C:\\Users\\user\\Desktop\\Repository\\TestTask\\Test task.Tests\\Test task.Tests.csproj",
+        "projectPath": "C:\\Users\\user\\Desktop\\RepositoryTestTask\\TestTask\\Test task.Tests\\Test task.Tests.csproj",
         "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\user\\Desktop\\Repository\\TestTask\\Test task.Tests\\obj\\",
+        "outputPath": "C:\\Users\\user\\Desktop\\RepositoryTestTask\\TestTask\\Test task.Tests\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,8 +28,8 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "C:\\Users\\user\\Desktop\\Repository\\TestTask\\Test task\\Test task.csproj": {
-                "projectPath": "C:\\Users\\user\\Desktop\\Repository\\TestTask\\Test task\\Test task.csproj"
+              "C:\\Users\\user\\Desktop\\RepositoryTestTask\\TestTask\\Test task\\Test task.csproj": {
+                "projectPath": "C:\\Users\\user\\Desktop\\RepositoryTestTask\\TestTask\\Test task\\Test task.csproj"
               }
             }
           }
@@ -83,14 +83,14 @@
         }
       }
     },
-    "C:\\Users\\user\\Desktop\\Repository\\TestTask\\Test task\\Test task.csproj": {
+    "C:\\Users\\user\\Desktop\\RepositoryTestTask\\TestTask\\Test task\\Test task.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\user\\Desktop\\Repository\\TestTask\\Test task\\Test task.csproj",
+        "projectUniqueName": "C:\\Users\\user\\Desktop\\RepositoryTestTask\\TestTask\\Test task\\Test task.csproj",
         "projectName": "Test task",
-        "projectPath": "C:\\Users\\user\\Desktop\\Repository\\TestTask\\Test task\\Test task.csproj",
+        "projectPath": "C:\\Users\\user\\Desktop\\RepositoryTestTask\\TestTask\\Test task\\Test task.csproj",
         "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\user\\Desktop\\Repository\\TestTask\\Test task\\obj\\",
+        "outputPath": "C:\\Users\\user\\Desktop\\RepositoryTestTask\\TestTask\\Test task\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
