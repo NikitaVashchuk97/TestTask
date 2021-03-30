@@ -13,6 +13,11 @@ namespace Test_task.Controllers
 
         public Task<User> CreateUser(User user);
 
+        public Task Update(User user);
+
+        public ValueTask<User> GetUserByMail(string email);
+
+        public ValueTask<User> GetUserById(int id);
 
     }
 }

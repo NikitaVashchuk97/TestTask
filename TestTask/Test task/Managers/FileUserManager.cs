@@ -51,5 +51,27 @@ namespace Test_task.Controllers
                 await JsonSerializer.SerializeAsync<List<User>>(fs, users);
             }
         }
+
+        public async Task Update(User user)
+        {
+            var users = await GetAllUsers();
+            var foundUserIndex = users.IndexOf(users.FirstOrDefault(u => u.Id == user.Id));
+            users[foundUserIndex] = user;
+
+            using FileStream fs = new FileStream(path, FileMode.Create);
+            await JsonSerializer.SerializeAsync<List<User>>(fs, users);
+        }
+
+        public async ValueTask<User> GetUserByMail(string email)
+        {
+            var users = await GetAllUsers();
+            return users.FirstOrDefault(user => user.Mail == email);
+        }
+
+        public async ValueTask<User> GetUserById(int id)
+        {
+            var users = await GetAllUsers();
+            return users.FirstOrDefault(user => user.Id == id);
+        }
     }
 }

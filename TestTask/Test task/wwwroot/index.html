@@ -2,12 +2,11 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Список пользователей</title>
 </head>
 <body>
     <div id="errors"></div>
     <h2>Список пользователей</h2>
-    <form name="userForm">
+    <!--<form name="userForm">
         <div>
             <label for="name">Имя:</label>
             <input name="name" />
@@ -23,122 +22,138 @@
 
             <button type="submit" id="submit">Добавить</button>
         </div>
+    </form>-->
+    <div id="myForm"></div>
+    <div>
+        <button type="button" id="buttonRegistration" onclick="GetPageRegister()">Регистрация</button>
+        <button type="button" id="buttonAuthorization" onclick="GetPageLogin()">Авторизация</button>
+        <button type="button" id="buttonUsers" onclick="GetPageUsers()">Список пользователей</button>
+    </div>
+
+    <select name="" id="select" onchange="SetLanguages()"></select>
+
+    <!--<select name="" id="selectJpg" onchange="SetPicture()"></select>-->
+
+    <!--<img id="picture" alt="Не нашел" />-->
+
+    <form name="formPicture" id="formPicture" enctype="multipart/form-data">
+        <div>
+            <input type="file" name="uploadedFile" /><br>
+            <input id="addPicture" type="submit" value="Загрузить" />
+        </div>
     </form>
+
     <table>
-        <thead><tr><th>Id</th><th>Имя</th><th>Фамилия</th><th>Почта</th><th>Пароль</th></tr></thead>
+        <thead><tr><th>Аватар</th><th>Id</th><th>Имя</th><th>Фамилия</th><th>Почта</th><th>Пароль</th><th>Язык</th><th>Админ</th></tr></thead>
         <tbody>
         </tbody>
     </table>
+
+    <script src="js\cultureSettings.js"></script>
+    <script src="js\login.js"></script>
+    <script src="js\mainFunctional.js"></script>
+    <script src="js\registration.js"></script>
     <script>
-        async function GetUsers() {
-            const response = await fetch("/api/users", {
-                method: "GET",
-                headers: { "Accept": "application/json" }
+
+        //function SetPicture() {
+        //    const userSelectedJpg = document.getElementById("selectJpg").value;
+        //    document.getElementById("picture").src = userSelectedJpg;
+        //}
+
+        async function AddPicture(picture) {
+
+            const response = await fetch("api/Picture", {
+                method: "POST",
+                body: picture
             });
-            if (response.ok === true) {
-                const users = await response.json();
-                let rows = document.querySelector("tbody");
-                users.forEach(user => {
-                    rows.append(row(user));
-                });
+            if (response.ok) {
+                //GetPictures();
             }
         }
 
-
-        async function CreateUser(userName, userSurname, userMail, userPassword) {
-
-            const response = await fetch("api/users", {
-                method: "POST",
-                headers: { "Accept": "application/json", "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    name: userName,
-                    surname: userSurname,
-                    mail: userMail,
-                    password: userPassword
-                })
+        async function GetUser(id) {
+            const response = await fetch("/api/users/" + id, {
+                method: "GET",
+                headers: { "Accept": "application/json" }
             });
-            if (response.ok === true) {
+            if (response.ok) {
                 const user = await response.json();
-                document.querySelector("tbody").append(row(user));
+                const form = document.forms["pageUsers"];
+                form.elements["id"].value = user.id;
+                form.elements["name"].value = user.name;
+                form.elements["surname"].value = user.surname;
+                form.elements["mail"].value = user.mail;
+                form.elements["password"].value = user.password;
             }
             else {
-                const errorData = await response.json();                
-                if (errorData) {
-
-                    if (errorData["Name"]) {
-                        addError(errorData["Name"]);
-                    }
-
-                    if (errorData.errors) {
-                        if (errorData.errors["Name"]) {
-                            addError(errorData.errors["Name"]);
-                        }
-                        if (errorData.errors["Surname"]) {
-                            addError(errorData.errors["Surname"]);
-                        }
-                        if (errorData.errors["Mail"]) {
-                            addError(errorData.errors["Mail"]);
-                        }
-                        if (errorData.errors["Password"]) {
-                            addError(errorData.errors["Password"]);
-                        }
-                    }
+                if (response.status == 404) {
+                    alert('Пройдите авторизацию');
                 }
             }
         }
 
-        function addError(errors) {
-            errors.forEach(error => {
-                const p = document.createElement("p");
-                p.append(error);
-                document.getElementById("errors").append(p);
+        async function SetAdminRole(userId) {
+            const response = await fetch("api/users/admin", {
+                method: "POST",
+                headers: { "Accept": "application/json", "Content-Type": "application/json" },
+                body: JSON.stringify(parseInt(userId, 10))
             });
+            if (response.ok === true) {
+                return true;
+            }
+            else
+                return false;
         }
 
+        //async function GetPictures() {
+        //    const response = await fetch("/api/Picture", {
+        //        method: "GET",
+        //        headers: { "Accept": "application/json" }
+        //    });
+        //    if (response.ok) {
+        //        const pictures = await response.json();
+        //        var list = document.getElementById('selectJpg'),
+        //            item = document.createElement('option');
 
-        function row(user) {
+        //        list.innerHTML = "";
 
-            const tr = document.createElement("tr");
+        //        pictures.forEach(picture => {
+        //            item.innerHTML = picture;
+        //            item.value = picture;
+        //            list.appendChild(item.cloneNode(true));
+        //        });
+        //    }
+        //}
 
-            const idTd = document.createElement("td");
-            idTd.append(user.id);
-            tr.append(idTd);
-
-            const nameTd = document.createElement("td");
-            nameTd.append(user.name);
-            tr.append(nameTd);
-
-            const surnameTd = document.createElement("td");
-            surnameTd.append(user.surname);
-            tr.append(surnameTd);
-
-            const mailTd = document.createElement("td");
-            mailTd.append(user.mail);
-            tr.append(mailTd);
-
-            const passwordTd = document.createElement("td");
-            passwordTd.append(user.password);
-            tr.append(passwordTd);
-
-            return tr;
-        }
-
-
-        document.forms["userForm"].addEventListener("submit", e => {
+        formPicture.onsubmit = async (e) => {
             e.preventDefault();
 
-            document.getElementById("errors").innerHTML = "";
+            AddPicture(new FormData(formPicture));
+        };
 
-            const form = document.forms["userForm"];
-            const name = form.elements["name"].value;
-            const surname = form.elements["surname"].value;
-            const mail = form.elements["mail"].value;
-            const password = form.elements["password"].value;
-            CreateUser(name, surname, mail, password);//add почта, пароль, проверка модели(выдать ошибку через ErrorMessageResourceType, добавить кнопку смены языка через ресурсные ключи)
-        });
+        async function EditUser(userId, userName, userSurname, userMail, userPassword, userLanguage) {
+            const response = await fetch("api/users", {
+                method: "PUT",
+                headers: { "Accept": "application/json", "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    id: parseInt(userId, 10),
+                    name: userName,
+                    surname: userSurname,
+                    mail: userMail,
+                    password: userPassword,
+                    language: userLanguage
+                })
+            });
+            if (response.ok === true) {
+                GetUsers();
+            }
+        }
 
+        GetPageUsers();
 
-        GetUsers();
+        //GetPictures();
+
+        GetLanguages();
 
     </script>
 </body>

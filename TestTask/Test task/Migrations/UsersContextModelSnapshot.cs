@@ -22,6 +22,12 @@ namespace Test_task.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<bool>("IsAdmin")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("Language")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
                     b.Property<string>("Mail")
                         .IsRequired()
                         .HasMaxLength(30)
@@ -45,6 +51,28 @@ namespace Test_task.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            IsAdmin = true,
+                            Language = "en-Us",
+                            Mail = "www.vbsda@a.ru",
+                            Name = "Иван",
+                            Password = "265676",
+                            Surname = "Иванов"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            IsAdmin = true,
+                            Language = "en-Us",
+                            Mail = "www.vbsda@a.ru",
+                            Name = "Петр",
+                            Password = "265676",
+                            Surname = "Петров"
+                        });
                 });
 #pragma warning restore 612, 618
         }

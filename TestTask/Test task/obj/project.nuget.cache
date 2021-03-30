@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "jeumAdDu33sYuqxvgmB6jPvxfFm4SzD8wpQRzOB7poie4JBqMJbgPiXKGitCI+u45qax/eNVJVjTdHSjd+0BUw==",
+  "dgSpecHash": "gViogjivz7Lk1+IscR6IXH27QAvpC0cNwJYijde+VkiCCSOeDBGIxIrCMvDSHRrfjubhXDcB7qhkilF+Aib0AA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\user\\Desktop\\RepositoryTestTask\\TestTask\\Test task\\Test task.csproj",
+  "projectFilePath": "C:\\Users\\user\\Desktop\\RepositoryTestTask\\TestTask\\Test task\\Test_task.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\user\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
@@ -28,6 +28,9 @@
     "C:\\Users\\user\\.nuget\\packages\\microsoft.extensions.options\\5.0.0\\microsoft.extensions.options.5.0.0.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0-preview.1.21102.12\\microsoft.extensions.primitives.6.0.0-preview.1.21102.12.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\mysqlconnector\\1.1.0\\mysqlconnector.1.1.0.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\nlog\\4.7.9\\nlog.4.7.9.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\nlog.extensions.logging\\1.7.1\\nlog.extensions.logging.1.7.1.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\nlog.web.aspnetcore\\4.11.0\\nlog.web.aspnetcore.4.11.0.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\pomelo.entityframeworkcore.mysql\\5.0.0-alpha.2\\pomelo.entityframeworkcore.mysql.5.0.0-alpha.2.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\system.collections.immutable\\5.0.0\\system.collections.immutable.5.0.0.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\system.componentmodel.annotations\\5.0.0\\system.componentmodel.annotations.5.0.0.nupkg.sha512",
